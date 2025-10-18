@@ -1,0 +1,15 @@
+{
+  "min_disp": 0,
+  "num_disp": 192,
+  "block_size": 7,
+  "uniq": 12,
+  "disp12": 1,
+  "speckle_win": 150,
+  "speckle_rng": 2,
+  "prefilter_cap": 31,
+  "median_ksize": 0,
+  "bilateral_d": 0,
+  "bilateral_sigma_color": 1.5,
+  "bilateral_sigma_space": 1.5,
+  "vmax_fixed": null
+}

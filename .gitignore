@@ -1,0 +1,24 @@
+@"
+# Entornos
+.venv/
+.venv311/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Binaries grandes
+*.pyd
+*.whl
+*.dll
+*.so
+
+# Datos pesados opcionales
+data/
+outputs/
+"@ | Out-File -Encoding utf8 .gitignore
