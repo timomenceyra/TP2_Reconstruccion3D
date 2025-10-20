@@ -19,5 +19,4 @@ __pycache__/
 *.whl
 
 # Datos grandes opcionales
-data/
 outputs/
