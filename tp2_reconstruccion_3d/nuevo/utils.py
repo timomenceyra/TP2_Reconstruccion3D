@@ -54,3 +54,20 @@ def show_pair_any(idx=14, rectificar=True, num_lines=20, stereo_maps=None):
     plt.title(f"{titulo} - Par {idx}", fontsize=16)
     plt.axis("off")
     plt.show()
+
+def compute_depth(disparity_map, f, B, default=1000.0):
+
+    # Crea una copia del mapa de disparidad
+    disparity_map = disparity_map.copy()
+    
+    # Evita divisiones por cero o disparidades negativas (les asignamos el valor default)
+    mask_invalid = (disparity_map <= 0)
+    
+    # Calcula la profundidad con la fórmula Z = f * B / disparidad
+    depth_map = np.zeros_like(disparity_map, dtype=np.float32)
+    depth_map[~mask_invalid] = (f * B) / disparity_map[~mask_invalid]
+    
+    # Asigna valor fijo a los puntos donde la disparidad es inválida
+    depth_map[mask_invalid] = default
+    
+    return depth_map
