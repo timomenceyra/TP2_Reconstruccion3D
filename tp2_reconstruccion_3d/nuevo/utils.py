@@ -55,6 +55,23 @@ def show_pair_any(idx=14, rectificar=True, num_lines=20, stereo_maps=None):
     plt.axis("off")
     plt.show()
 
+def show_pair_any_budha(idx=14, rectificar=True, num_lines=20, stereo_maps=None):
+    left_path, right_path = f"data/stereo_budha_charuco/captures/left_{idx}.jpg", f"data/stereo_budha_charuco/captures/right_{idx}.jpg"
+
+    if rectificar:
+        L, R = rectify_stereo_pair(left_path, right_path, stereo_maps)
+        titulo = "Rectificadas"
+    else:
+        L, R = cv2.imread(left_path), cv2.imread(right_path)
+        titulo = "Originales (sin rectificar)"
+
+    combined = draw_epipolar_lines(L, R, num_lines=num_lines)
+
+    plt.figure(figsize=(18,9))
+    plt.imshow(cv2.cvtColor(combined, cv2.COLOR_BGR2RGB))
+    plt.title(f"{titulo} - Par {idx}", fontsize=16)
+    plt.axis("off")
+    plt.show()
 def compute_depth(disparity_map, f, B, default=1000.0):
 
     # Crea una copia del mapa de disparidad
